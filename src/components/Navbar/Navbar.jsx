@@ -1,11 +1,13 @@
 import logo from "../../assets/logo.png";
 import { IoIosSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
+import Menu from "../../assets/data/menu.json";
 import "./Navbar.css";
+import DarkMode from "./DarkMode";
 
 const Navbar = () => {
   return (
-    <div className="shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-50 capitalize">
+    <div className="shadow-md bg-white text-white dark:bg-gray-900  duration-200 relative z-50 capitalize">
       <div className="bg-primary/40 ">
         {/* top navbar */}
         <div className="bg-black">
@@ -31,6 +33,7 @@ const Navbar = () => {
               shop
             </a>
           </div>
+
           {/* search button and order button */}
           <div className="flex justify-between items-center gap-4">
             <div className="group relative">
@@ -48,10 +51,22 @@ const Navbar = () => {
               </span>
               <FaCartShopping className="cursor-pointer" />
             </button>
+            {/* dark mode*/}
+            <div>
+              <DarkMode />
+            </div>
           </div>
         </div>
       </div>
       {/* bottom navbar */}
+      {/* menu */}
+      <div className="bg-white text-black">
+        <ul className="flex justify-center gap-5">
+          {Menu.map((item) => (
+            <li key={item.id}>{item.name}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
